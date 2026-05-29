@@ -9,77 +9,113 @@
 <title>도쿄 여행 2026 ✈</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#fff;--surface:#f7f7f5;--card:#fff;--border:#e8e8e4;--border-light:#f0f0ec;--text:#1a1a1a;--sub:#6b6b6b;--muted:#aaa;--blue:#2563eb;--blue-bg:#eff6ff;--blue-bd:#bfdbfe;--red:#dc2626;--red-bg:#fef2f2;--red-bd:#fecaca;--green:#16a34a;--green-bg:#f0fdf4;--green-bd:#bbf7d0;--amber:#d97706;--amber-bg:#fffbeb;--amber-bd:#fde68a;--r:12px;--r-sm:8px}
+:root{--bg:#fff;--sf:#f7f7f5;--card:#fff;--bd:#e8e8e4;--bdl:#f0f0ec;--tx:#1a1a1a;--sub:#6b6b6b;--mt:#aaa;
+--blue:#2563eb;--bbg:#eff6ff;--bbd:#bfdbfe;
+--red:#dc2626;--rbg:#fef2f2;--rbd:#fecaca;
+--green:#16a34a;--gbg:#f0fdf4;--gbd:#bbf7d0;
+--amb:#d97706;--abg:#fffbeb;--abd:#fde68a;
+--pur:#7c3aed;--pbg:#f5f3ff;--pbd:#ddd6fe;
+--r:12px;--rsm:8px}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;overflow:hidden;background:var(--bg)}
-body{font-family:'Noto Sans KR',-apple-system,sans-serif;color:var(--text);display:flex;flex-direction:column;max-width:430px;margin:0 auto;border-left:1px solid var(--border-light);border-right:1px solid var(--border-light)}
-.header{padding:16px 16px 0;background:#fff;border-bottom:1px solid var(--border);flex-shrink:0}
+body{font-family:'Noto Sans KR',-apple-system,sans-serif;color:var(--tx);display:flex;flex-direction:column;max-width:430px;margin:0 auto;border-left:1px solid var(--bdl);border-right:1px solid var(--bdl)}
+.header{padding:16px 16px 0;background:#fff;border-bottom:1px solid var(--bd);flex-shrink:0}
 .header-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:14px}
-.app-title{font-size:18px;font-weight:700;color:var(--text);letter-spacing:-0.5px}
-.app-sub{font-size:11px;color:var(--muted);margin-top:3px}
-.date-chip{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:4px 10px;font-family:'DM Mono',monospace;font-size:10px;color:var(--sub)}
+.app-title{font-size:18px;font-weight:700;color:var(--tx);letter-spacing:-0.5px}
+.app-sub{font-size:11px;color:var(--mt);margin-top:3px}
+.date-chip{background:var(--sf);border:1px solid var(--bd);border-radius:20px;padding:4px 10px;font-family:'DM Mono',monospace;font-size:10px;color:var(--sub)}
 .tabs{display:flex;overflow-x:auto;scrollbar-width:none;margin:0 -16px;padding:0 16px}
 .tabs::-webkit-scrollbar{display:none}
-.tab{flex-shrink:0;padding:10px 14px;font-size:12px;font-weight:400;cursor:pointer;border-bottom:2px solid transparent;color:var(--muted);background:transparent;border-top:none;border-left:none;border-right:none;transition:all .15s;white-space:nowrap;font-family:'Noto Sans KR',sans-serif}
-.tab.on{color:var(--text);border-bottom-color:var(--text);font-weight:700}
-.scroll-area{flex:1;overflow-y:auto;background:var(--surface);scrollbar-width:none}
+.tab{flex-shrink:0;padding:10px 13px;font-size:12px;font-weight:400;cursor:pointer;border-bottom:2px solid transparent;color:var(--mt);background:transparent;border-top:none;border-left:none;border-right:none;transition:all .15s;white-space:nowrap}
+.tab.on{color:var(--tx);border-bottom-color:var(--tx);font-weight:700}
+.scroll-area{flex:1;overflow-y:auto;background:var(--sf);scrollbar-width:none}
 .scroll-area::-webkit-scrollbar{display:none}
 .panel{display:none;padding:14px 14px 40px}
 .panel.on{display:block}
-.info-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:10px}
-.info-head{padding:10px 14px;font-size:11px;font-weight:700;color:var(--sub);background:var(--surface);border-bottom:1px solid var(--border-light)}
-.info-row{display:flex;gap:12px;padding:11px 14px;border-bottom:1px solid var(--border-light)}
+
+/* 정보카드 */
+.info-card{background:#fff;border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;margin-bottom:10px}
+.info-head{padding:10px 14px;font-size:11px;font-weight:700;color:var(--sub);background:var(--sf);border-bottom:1px solid var(--bdl)}
+.info-row{display:flex;gap:12px;padding:11px 14px;border-bottom:1px solid var(--bdl)}
 .info-row:last-child{border-bottom:none}
-.info-label{font-size:11px;color:var(--muted);min-width:58px;line-height:1.6;flex-shrink:0;padding-top:1px}
-.info-val{font-size:12px;color:var(--text);line-height:1.65;flex:1}
+.info-label{font-size:11px;color:var(--mt);min-width:58px;line-height:1.6;flex-shrink:0;padding-top:1px}
+.info-val{font-size:12px;color:var(--tx);line-height:1.65;flex:1}
 .info-val strong{font-weight:700}
-.warn-strip{background:var(--red-bg);border-top:1px solid var(--red-bd);padding:10px 14px;font-size:11px;color:var(--red);line-height:1.5;display:flex;gap:6px;align-items:flex-start}
-.day-head{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:14px;margin-bottom:10px}
-.day-name{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.3px}
-.day-route{font-size:11px;color:var(--muted);margin-top:4px;line-height:1.5}
+.warn-strip{background:var(--rbg);border-top:1px solid var(--rbd);padding:10px 14px;font-size:11px;color:var(--red);line-height:1.5;display:flex;gap:6px}
+
+/* 데이헤더 */
+.day-head{background:#fff;border:1px solid var(--bd);border-radius:var(--r);padding:14px;margin-bottom:10px}
+.day-name{font-size:15px;font-weight:700;color:var(--tx);letter-spacing:-0.3px}
+.day-route{font-size:11px;color:var(--mt);margin-top:4px;line-height:1.5}
+
+/* 타임라인 */
 .tl{display:flex;flex-direction:column}
 .tl-item{display:flex;gap:10px}
 .tl-left{display:flex;flex-direction:column;align-items:center;width:40px;flex-shrink:0}
-.tl-time{font-family:'DM Mono',monospace;font-size:10px;color:var(--muted);padding-top:14px;width:36px;text-align:center;line-height:1}
+.tl-time{font-family:'DM Mono',monospace;font-size:10px;color:var(--mt);padding-top:14px;width:36px;text-align:center;line-height:1}
 .tl-dc{display:flex;flex-direction:column;align-items:center;flex:1;padding-top:18px}
-.tl-dot{width:6px;height:6px;border-radius:50%;background:var(--border);flex-shrink:0}
-.tl-dot.k{background:var(--text)}.tl-dot.w{background:var(--red)}
-.tl-line{width:1px;background:var(--border-light);flex:1;min-height:10px;margin-top:4px}
+.tl-dot{width:6px;height:6px;border-radius:50%;background:var(--bd);flex-shrink:0}
+.tl-dot.k{background:var(--tx)}.tl-dot.w{background:var(--red)}.tl-dot.t{background:var(--pur)}
+.tl-line{width:1px;background:var(--bdl);flex:1;min-height:10px;margin-top:4px}
 .tl-body{flex:1;padding:8px 0 8px}
-.spot{background:#fff;border:1px solid var(--border);border-radius:var(--r-sm);padding:12px}
-.spot.k{border-left:3px solid var(--text)}.spot.w{border-left:3px solid var(--red);background:var(--red-bg)}
+
+/* 스팟카드 */
+.spot{background:#fff;border:1px solid var(--bd);border-radius:var(--rsm);padding:12px}
+.spot.k{border-left:3px solid var(--tx)}
+.spot.w{border-left:3px solid var(--red);background:var(--rbg)}
+.spot.transit{background:var(--sf);border:1px dashed var(--bd);padding:10px 12px}
 .spot-top{display:flex;gap:10px;align-items:flex-start}
 .spot-icon{font-size:18px;flex-shrink:0;line-height:1.2}
 .spot-info{flex:1;min-width:0}
-.spot-title{font-size:13px;font-weight:700;color:var(--text);line-height:1.35}
+.spot-title{font-size:13px;font-weight:700;color:var(--tx);line-height:1.35}
 .spot.w .spot-title{color:var(--red)}
+.spot.transit .spot-title{font-size:12px;font-weight:500;color:var(--sub)}
 .spot-desc{font-size:11px;color:var(--sub);margin-top:3px;line-height:1.6}
-.spot-foot{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
+.spot-foot{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;align-items:center}
+
+/* 교통 배지 */
+.transit-info{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;align-items:center}
+.line-badge{display:inline-flex;align-items:center;gap:3px;font-size:10px;padding:2px 8px;border-radius:4px;font-weight:700;color:#fff;white-space:nowrap}
+.sub-badge{display:inline-flex;align-items:center;gap:3px;font-size:10px;padding:2px 8px;border-radius:20px;font-weight:500;white-space:nowrap}
+.sub-ok{background:var(--gbg);color:var(--green);border:1px solid var(--gbd)}
+.sub-ng{background:var(--rbg);color:var(--red);border:1px solid var(--rbd)}
+.sub-walk{background:var(--abg);color:var(--amb);border:1px solid var(--abd)}
+.time-badge{font-size:10px;color:var(--mt);padding:2px 6px;border:1px solid var(--bdl);border-radius:20px}
+
+/* 태그 */
 .pill{font-size:10px;padding:3px 8px;border-radius:20px;font-weight:500;white-space:nowrap;border:1px solid}
-.p-gray{background:var(--surface);color:var(--sub);border-color:var(--border)}
-.p-blue{background:var(--blue-bg);color:var(--blue);border-color:var(--blue-bd)}
-.p-red{background:var(--red-bg);color:var(--red);border-color:var(--red-bd)}
-.p-green{background:var(--green-bg);color:var(--green);border-color:var(--green-bd)}
-.p-amber{background:var(--amber-bg);color:var(--amber);border-color:var(--amber-bd)}
-.map-btn{display:inline-flex;align-items:center;gap:4px;font-size:10px;padding:3px 9px;border-radius:20px;background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-bd);text-decoration:none;font-weight:500;cursor:pointer;transition:background .15s}
-.map-btn:active{background:#dbeafe}
-.route-btn{display:inline-flex;align-items:center;gap:4px;font-size:10px;padding:3px 9px;border-radius:20px;background:var(--surface);color:var(--sub);border:1px solid var(--border);text-decoration:none;font-weight:500;cursor:pointer}
-.hint{background:var(--amber-bg);border:1px solid var(--amber-bd);border-radius:var(--r-sm);padding:11px 13px;font-size:11px;color:var(--amber);line-height:1.65;margin-bottom:12px}
-.cl-item{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;background:#fff;border:1px solid var(--border);border-radius:var(--r-sm);margin-bottom:6px;cursor:pointer}
+.p-gray{background:var(--sf);color:var(--sub);border-color:var(--bd)}
+.p-blue{background:var(--bbg);color:var(--blue);border-color:var(--bbd)}
+.p-red{background:var(--rbg);color:var(--red);border-color:var(--rbd)}
+.p-green{background:var(--gbg);color:var(--green);border-color:var(--gbd)}
+.p-amber{background:var(--abg);color:var(--amb);border-color:var(--abd)}
+
+/* 버튼 */
+.map-btn{display:inline-flex;align-items:center;gap:4px;font-size:10px;padding:3px 9px;border-radius:20px;background:var(--bbg);color:var(--blue);border:1px solid var(--bbd);text-decoration:none;font-weight:500;cursor:pointer}
+.route-btn{display:inline-flex;align-items:center;gap:4px;font-size:10px;padding:3px 9px;border-radius:20px;background:var(--sf);color:var(--sub);border:1px solid var(--bd);text-decoration:none;font-weight:500;cursor:pointer}
+
+/* 체크 */
+.hint{background:var(--abg);border:1px solid var(--abd);border-radius:var(--rsm);padding:11px 13px;font-size:11px;color:var(--amb);line-height:1.65;margin-bottom:12px}
+.cl-item{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;background:#fff;border:1px solid var(--bd);border-radius:var(--rsm);margin-bottom:6px;cursor:pointer}
 .cl-item.done{opacity:.4}.cl-item.done .cl-title{text-decoration:line-through}
-.cl-box{width:18px;height:18px;border-radius:4px;border:1.5px solid var(--border);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:11px;transition:all .15s}
-.cl-item.done .cl-box{background:var(--text);border-color:var(--text);color:#fff}
-.cl-title{font-size:13px;font-weight:500;color:var(--text);flex:1}
-.cl-sub{font-size:11px;color:var(--muted);margin-top:2px}
-.cl-urgent{font-size:9px;padding:2px 6px;border-radius:10px;background:var(--red-bg);color:var(--red);border:1px solid var(--red-bd);white-space:nowrap;align-self:flex-start;margin-top:2px}
-.sec-label{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.04em;margin:14px 0 8px}
+.cl-box{width:18px;height:18px;border-radius:4px;border:1.5px solid var(--bd);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:11px;transition:all .15s}
+.cl-item.done .cl-box{background:var(--tx);border-color:var(--tx);color:#fff}
+.cl-title{font-size:13px;font-weight:500;color:var(--tx);flex:1}
+.cl-sub{font-size:11px;color:var(--mt);margin-top:2px}
+.cl-urgent{font-size:9px;padding:2px 6px;border-radius:10px;background:var(--rbg);color:var(--red);border:1px solid var(--rbd);white-space:nowrap;align-self:flex-start;margin-top:2px}
+.sec-label{font-size:11px;font-weight:700;color:var(--mt);letter-spacing:.04em;margin:14px 0 8px}
+
+/* 범례 */
+.legend{background:#fff;border:1px solid var(--bd);border-radius:var(--rsm);padding:12px 14px;margin-bottom:10px}
+.legend-title{font-size:11px;font-weight:700;color:var(--sub);margin-bottom:8px}
+.legend-row{display:flex;flex-wrap:wrap;gap:5px}
 </style>
 </head>
 <body>
 <div class="header">
   <div class="header-top">
     <div><div class="app-title">✈ 도쿄 여행 2026</div><div class="app-sub">아시아나 OZ102/103 · 미쓰이가든 호텔 긴자</div></div>
-    <div class="date-chip">5.30 – 6.3</div>
+    <div class="date-chip">5.30–6.3</div>
   </div>
   <div class="tabs" id="tabs">
     <div class="tab on" data-p="p-info">항공/숙소</div>
@@ -93,13 +129,22 @@ body{font-family:'Noto Sans KR',-apple-system,sans-serif;color:var(--text);displ
 </div>
 <div class="scroll-area">
 
+<!-- 항공/숙소 -->
 <div class="panel on" id="p-info">
-  <div class="hint">💡 Safari → 공유(□↑) → <strong>홈 화면에 추가</strong>하면 앱처럼 사용 가능해요</div>
+  <div class="hint">💡 Safari → 공유(□↑) → <strong>홈 화면에 추가</strong>하면 앱처럼 사용 가능</div>
+  <div class="legend">
+    <div class="legend-title">교통 표시 범례</div>
+    <div class="legend-row">
+      <span class="sub-badge sub-ok">✅ 서브웨이티켓 OK</span>
+      <span class="sub-badge sub-ng">❌ 스이카 필요</span>
+      <span class="sub-badge sub-walk">🚶 도보</span>
+    </div>
+  </div>
   <div class="info-card">
     <div class="info-head">✈ 항공편</div>
     <div class="info-row"><div class="info-label">가는 편</div><div class="info-val"><strong>OZ102</strong> · 5/30(토) · 인천(T2) 08:25 → 나리타 10:50 · 좌석 31B</div></div>
     <div class="info-row"><div class="info-label">오는 편</div><div class="info-val"><strong>OZ103</strong> · 6/3(수) · 나리타(T1) 16:30 → 인천(T2) 19:10 · 좌석 29J</div></div>
-    <div class="warn-strip">⚠ 아시아나항공은 인천공항 <strong>제2터미널(T2)</strong> — 제1터미널로 가면 안 됩니다!</div>
+    <div class="warn-strip">⚠ 아시아나항공 인천공항 <strong>제2터미널(T2)</strong> — 제1터미널로 가면 안 됩니다!</div>
   </div>
   <div class="info-card">
     <div class="info-head">🏨 숙소</div>
@@ -113,84 +158,230 @@ body{font-family:'Noto Sans KR',-apple-system,sans-serif;color:var(--text);displ
     <div class="info-row"><div class="info-label">식당</div><div class="info-val">히츠마부시 나고야 빈초 · 마로니에 게이트 긴자 1호점</div></div>
     <div class="info-row"><div class="info-label">일시</div><div class="info-val"><strong>5/31(일) 18:00</strong> · 2명 · 현장결제</div></div>
     <div class="info-row"><div class="info-label">주의</div><div class="info-val">1시간 30분 제한 → <strong>17:50 도착 필수!</strong></div></div>
-    <div class="info-row"><div class="info-label">위치</div><div class="info-val"><a class="map-btn" href="https://maps.google.com/?q=Marronnier+Gate+Ginza+1+Tokyo" target="_blank">📍 위치</a> <a class="route-btn" href="https://maps.google.com/maps?daddr=Marronnier+Gate+Ginza+1+Tokyo&travelmode=transit" target="_blank">🧭 경로</a></div></div>
+    <div class="info-row"><div class="info-label">위치</div><div class="info-val"><a class="map-btn" href="https://maps.google.com/?q=Marronnier+Gate+Ginza+1+Tokyo" target="_blank">📍 위치</a></div></div>
   </div>
 </div>
 
-<div class="panel" id="p-d1">
-  <div class="day-head"><div class="day-name">DAY 1 · 5/30(토) — 도착 & 긴자</div><div class="day-route">OZ102 나리타 10:50 도착 · N'EX로 이동 후 긴자 정착</div></div>
-  <div class="tl" id="tl-d1"></div>
-</div>
-<div class="panel" id="p-d2">
-  <div class="day-head"><div class="day-name">DAY 2 · 5/31(일) — 서브컬처 + 신주쿠 + 히츠마부시</div><div class="day-route">애니메이트 이케부쿠로 → 신주쿠 쇼핑 → 도큐 가부키초 타워 → 긴자</div></div>
-  <div class="tl" id="tl-d2"></div>
-</div>
-<div class="panel" id="p-d3">
-  <div class="day-head"><div class="day-name">DAY 3 · 6/1(월) — 아키하바라 + 갓파바시 + 전통 도쿄</div><div class="day-route">아키하바라 → 갓파바시 도구거리 → 야나카 → 네즈신사 → 아사쿠사</div></div>
-  <div class="tl" id="tl-d3"></div>
-</div>
-<div class="panel" id="p-d4">
-  <div class="day-head"><div class="day-name">DAY 4 · 6/2(화) — 발레쇼핑 + 스트리트 패션 + 시부야</div><div class="day-route">스벅 리저브 → 시모키타 → 챠코트 → 유미코 → DULTON → 휴먼메이드 → 스투시 → 단톤 → 시부야</div></div>
-  <div class="tl" id="tl-d4"></div>
-</div>
-<div class="panel" id="p-d5">
-  <div class="day-head"><div class="day-name">DAY 5 · 6/3(수) — 체크아웃 & 귀국</div><div class="day-route">OZ103 나리타 16:30 출발 · 좌석 29J · 14:00 이전 출발 필수</div></div>
-  <div class="tl" id="tl-d5"></div>
-</div>
+<!-- DAY 1~5 컨테이너 -->
+<div class="panel" id="p-d1"><div class="day-head"><div class="day-name">DAY 1 · 5/30(토) — 도착 & 긴자</div><div class="day-route">OZ102 나리타 10:50 도착 · N'EX(별도구매)로 이동</div></div><div class="tl" id="tl-d1"></div></div>
+<div class="panel" id="p-d2"><div class="day-head"><div class="day-name">DAY 2 · 5/31(일) — 서브컬처 + 신주쿠 + 히츠마부시</div><div class="day-route">애니메이트 이케부쿠로 → 신주쿠 → 가부키초 → 긴자</div></div><div class="tl" id="tl-d2"></div></div>
+<div class="panel" id="p-d3"><div class="day-head"><div class="day-name">DAY 3 · 6/1(월) — 야나카·네즈 + 아사쿠사 + 갓파바시</div><div class="day-route">야나카 긴자 → 네즈신사 → 센소지 → 갓파바시 → (선택) 아키하바라</div></div><div class="tl" id="tl-d3"></div></div>
+<div class="panel" id="p-d4"><div class="day-head"><div class="day-name">DAY 4 · 6/2(화) — 발레쇼핑 + 스트리트 패션 + 시부야</div><div class="day-route">스벅 리저브(나카메구로) → 시모키타 → 챠코트 → 유미코 → 하라주쿠 → 시부야</div></div><div class="tl" id="tl-d4"></div></div>
+<div class="panel" id="p-d5"><div class="day-head"><div class="day-name">DAY 5 · 6/3(수) — 체크아웃 & 귀국</div><div class="day-route">OZ103 나리타 16:30 출발 · 좌석 29J · 14:00 이전 출발 필수</div></div><div class="tl" id="tl-d5"></div></div>
 
+<!-- 체크리스트 -->
 <div class="panel" id="p-check">
   <div class="sec-label">⚠ 필수 확인</div><div id="cl-u"></div>
   <div class="sec-label">준비사항</div><div id="cl-n"></div>
 </div>
-
 </div>
 
 <script>
-const DAYS={
+// 노선 색상
+const LINE_COLORS = {
+  '긴자선':'#FF9500','히비야선':'#9B9EA0','치요다선':'#00BB85',
+  '도에이아사쿠사선':'#E85298','도에이오에도선':'#B6007A',
+  '후쿠토신선':'#9C5E31','N\'EX':'#E5002D','오다큐선':'#0072BC',
+  '게이오이노카시라선':'#0099CC','도큐도요코선':'#E5171F',
+  'JR야마노테선':'#80C241'
+};
+
+function lineBadge(name) {
+  const c = LINE_COLORS[name] || '#888';
+  return `<span class="line-badge" style="background:${c}">${name}</span>`;
+}
+function subOk() { return `<span class="sub-badge sub-ok">✅ 서브웨이티켓</span>`; }
+function subNg(reason) { return `<span class="sub-badge sub-ng">❌ 스이카 (${reason})</span>`; }
+function walk(min) { return `<span class="sub-badge sub-walk">🚶 도보 약 ${min}분</span>`; }
+function timeBadge(t) { return `<span class="time-badge">약 ${t}</span>`; }
+
+// transit 카드 생성
+function transitCard(from, to, lines, subwayOk, subwayNote, walkMin, timeStr) {
+  const linesHtml = lines.map(lineBadge).join('');
+  const subHtml = walkMin
+    ? walk(walkMin)
+    : (subwayOk ? subOk() : subNg(subwayNote));
+  return `
+    <div class="spot transit">
+      <div class="spot-top">
+        <div class="spot-icon" style="font-size:14px">🚃</div>
+        <div class="spot-info">
+          <div class="spot-title">${from} → ${to}</div>
+          <div class="transit-info">
+            ${linesHtml}${timeBadge(timeStr)}${subHtml}
+          </div>
+        </div>
+      </div>
+    </div>`;
+}
+
+const DAYS = {
   d1:[
-    {time:'11:30',icon:'🚆',type:'n',title:'나리타 → 호텔 이동',desc:"N'EX 탑승 → 신바시역 하차 → 미쓰이가든 긴자 체크인",pills:[{t:'체크인 15:00~',c:'p-amber'}],map:'Mitsui+Garden+Hotel+Ginza+Gochome+Tokyo',route:'Narita+Airport+to+Mitsui+Garden+Hotel+Ginza+Gochome+Tokyo'},
-    {time:'13:00',icon:'🍣',type:'k',title:'점심 — 츠키지 장외시장',desc:'카이센동 · 다마고야끼 · 가이구이 / 13:00 이전 도착 권장',pills:[{t:'맛집',c:'p-green'}],map:'Tsukiji+Outer+Market+Tokyo',route:'Mitsui+Garden+Hotel+Ginza+Gochome+to+Tsukiji+Outer+Market'},
-    {time:'15:00',icon:'🛍',type:'n',title:'긴자 식스 · 유니클로 긴자 플래그십',desc:'일본 한정 컬래버 라인 · 츠타야 북스',pills:[{t:'패션쇼핑',c:'p-blue'}],map:'GINZA+SIX+Tokyo',route:'Tsukiji+to+GINZA+SIX+Tokyo'},
-    {time:'16:30',icon:'✏️',type:'k',title:'G.Itoya 긴자 본점 (이토야)',desc:'긴자 2-7-15 / 12층 고급 문구 전문점 · 10:00~20:00\n12층 카페 Stylo — 수경재배 채소 메뉴',pills:[{t:'문구쇼핑',c:'p-amber'}],map:'Itoya+Ginza+Tokyo',route:'GINZA+SIX+to+Itoya+Ginza+Tokyo'},
-    {time:'18:00',icon:'🍺',type:'n',title:'저녁 — 긴자 이자카야',desc:'호텔 근처 골목 이자카야 / 첫날 가볍게',pills:[{t:'저녁',c:'p-green'}],map:'Ginza+izakaya+Tokyo',route:null},
+    {type:'spot',time:'11:30',icon:'🚆',cls:'n',title:'나리타 공항 → 호텔 이동',
+     desc:"N'EX 신바시역 하차 → 미쓰이가든 긴자 체크인 (15:00~)",
+     pills:[{t:'체크인 15:00~',c:'p-amber'}],
+     transit:{from:'나리타공항',to:'신바시역',lines:["N'EX"],ok:false,note:'별도구매 (약 3,070엔)',time:'약 80분'},
+     map:'Mitsui+Garden+Hotel+Ginza+Gochome+Tokyo'},
+    {type:'spot',time:'13:00',icon:'🍣',cls:'k',title:'점심 — 츠키지 장외시장',
+     desc:'카이센동·다마고야끼·가이구이 / 13:00 이전 도착 권장',
+     pills:[{t:'맛집',c:'p-green'}],
+     transit:{from:'신바시역',to:'츠키지',lines:['도보 or 버스'],walk:12,time:'도보 12분'},
+     map:'Tsukiji+Outer+Market+Tokyo'},
+    {type:'spot',time:'15:00',icon:'🛍',cls:'n',title:'긴자 식스 · 유니클로 긴자',
+     desc:'일본 한정 컬래버 라인 · 츠타야 북스',
+     pills:[{t:'패션쇼핑',c:'p-blue'}],
+     transit:{from:'츠키지',to:'긴자',lines:['도보'],walk:8,time:'도보 8분'},
+     map:'GINZA+SIX+Tokyo'},
+    {type:'spot',time:'16:30',icon:'✏️',cls:'k',title:'G.Itoya 긴자 본점',
+     desc:'긴자 2-7-15 / 12층 고급 문구 · 10:00~20:00\n12층 카페 Stylo — 수경재배 채소 메뉴',
+     pills:[{t:'문구쇼핑',c:'p-amber'}],
+     transit:{from:'긴자식스',to:'이토야',lines:['도보'],walk:3,time:'도보 3분'},
+     map:'Itoya+Ginza+Tokyo'},
+    {type:'spot',time:'18:30',icon:'🍺',cls:'n',title:'저녁 — 긴자 이자카야',
+     desc:'호텔 근처 골목 이자카야 / 첫날 가볍게',
+     pills:[{t:'저녁',c:'p-green'}],
+     map:'Ginza+izakaya+Tokyo'},
   ],
   d2:[
-    {time:'10:00',icon:'🎌',type:'k',title:'애니메이트 이케부쿠로 (10층)',desc:'세계 최대 애니메이트 / 프리렌 굿즈 + 이찌방쿠지 코너',pills:[{t:'서브컬처',c:'p-gray'}],map:'Animate+Ikebukuro+Tokyo',route:'Mitsui+Garden+Hotel+Ginza+Gochome+to+Animate+Ikebukuro+Tokyo'},
-    {time:'12:00',icon:'🍜',type:'n',title:'점심 — 이케부쿠로 라멘',desc:'선샤인시티 주변 식당가',pills:[{t:'점심',c:'p-green'}],map:'Ikebukuro+ramen+Tokyo',route:null},
-    {time:'13:30',icon:'👔',type:'k',title:'이세탄 신주쿠 멘즈관',desc:'이케부쿠로→신주쿠 전철 15분\nBEAMS · UNITED ARROWS · Ships / 외국인 면세 5% 추가',pills:[{t:'패션쇼핑',c:'p-blue'}],map:'Isetan+Shinjuku+Mens+Tokyo',route:'Ikebukuro+to+Isetan+Shinjuku+Tokyo'},
-    {time:'15:30',icon:'🛒',type:'n',title:'신주쿠 루미네 · 타카시마야',desc:'와이프 동반 추가 쇼핑 / 코스메 · 잡화',pills:[{t:'쇼핑',c:'p-blue'}],map:'Lumine+Shinjuku+Tokyo',route:null},
-    {time:'16:30',icon:'🏢',type:'k',title:'도큐 가부키초 타워 + 고질라 헤드',desc:'신주쿠 핫플 48층 복합타워\n2F 가부키요코초(푸드홀·DJ) · 3F namco TOKYO · 옥외 고질라 헤드 포토',pills:[{t:'핫플',c:'p-amber'},{t:'포토스팟',c:'p-amber'}],map:'Tokyu+Kabukicho+Tower+Shinjuku',route:'Lumine+Shinjuku+to+Tokyu+Kabukicho+Tower'},
-    {time:'17:00',icon:'🚃',type:'n',title:'긴자 이동',desc:'신주쿠→긴자 전철 약 20분',pills:[],map:null,route:'Shinjuku+Station+to+Ginza+Tokyo'},
-    {time:'17:50',icon:'⭐',type:'w',title:'히츠마부시 나고야 빈초 긴자점',desc:'18:00 예약 · 현장결제 · 2명 · 1시간 30분 제한\n17:50 도착 필수!',pills:[{t:'17:50 도착 필수!',c:'p-red'}],map:'Marronnier+Gate+Ginza+1+Tokyo',route:null},
+    {type:'spot',time:'10:00',icon:'🎌',cls:'k',title:'애니메이트 이케부쿠로 (10층)',
+     desc:'세계 최대 애니메이트 / 프리렌 굿즈 + 이찌방쿠지 코너',
+     pills:[{t:'서브컬처',c:'p-gray'}],
+     transit:{from:'긴자(호텔)',to:'이케부쿠로',lines:['히비야선','도에이아사쿠사선'],ok:true,time:'약 30분'},
+     map:'Animate+Ikebukuro+Tokyo'},
+    {type:'spot',time:'12:00',icon:'🍜',cls:'n',title:'점심 — 이케부쿠로 라멘',
+     desc:'선샤인시티 주변 식당가',pills:[{t:'점심',c:'p-green'}]},
+    {type:'spot',time:'13:30',icon:'👔',cls:'k',title:'이세탄 신주쿠 멘즈관',
+     desc:'BEAMS · UNITED ARROWS · Ships / 외국인 면세 5% 추가',
+     pills:[{t:'패션쇼핑',c:'p-blue'}],
+     transit:{from:'이케부쿠로',to:'신주쿠',lines:['후쿠토신선','도에이오에도선'],ok:true,time:'약 15분'},
+     map:'Isetan+Shinjuku+Mens+Tokyo'},
+    {type:'spot',time:'15:30',icon:'🛒',cls:'n',title:'신주쿠 루미네 · 타카시마야',
+     desc:'와이프 동반 추가 쇼핑 / 코스메 · 잡화',
+     pills:[{t:'쇼핑',c:'p-blue'}],
+     transit:{from:'이세탄',to:'루미네',lines:['도보'],walk:3,time:'도보 3분'},
+     map:'Lumine+Shinjuku+Tokyo'},
+    {type:'spot',time:'16:30',icon:'🏢',cls:'k',title:'도큐 가부키초 타워 + 고질라 헤드',
+     desc:'신주쿠 핫플 48층 복합타워\n2F 가부키요코초(푸드홀·DJ) · 3F namco TOKYO · 옥외 고질라 헤드',
+     pills:[{t:'핫플',c:'p-amber'},{t:'포토스팟',c:'p-amber'}],
+     transit:{from:'루미네',to:'도큐가부키초타워',lines:['도보'],walk:7,time:'도보 7분'},
+     map:'Tokyu+Kabukicho+Tower+Shinjuku'},
+    {type:'spot',time:'17:00',icon:'🚃',cls:'n',title:'긴자 이동',
+     desc:'신주쿠→긴자 약 20분',pills:[],
+     transit:{from:'신주쿠',to:'긴자',lines:['긴자선','도에이아사쿠사선'],ok:true,time:'약 20분'}},
+    {type:'spot',time:'17:50',icon:'⭐',cls:'w',title:'히츠마부시 나고야 빈초 긴자점',
+     desc:'18:00 예약 · 현장결제 · 2명 · 1시간 30분 제한\n17:50 도착 필수!',
+     pills:[{t:'17:50 도착 필수!',c:'p-red'}],
+     map:'Marronnier+Gate+Ginza+1+Tokyo'},
   ],
   d3:[
-    {time:'10:00',icon:'🎮',type:'k',title:'아키하바라 전기가 & 서브컬처',desc:'라디오카이칸 · 요도바시 아키바 · 메이드카페 거리\n전자제품·피규어·애니굿즈 집결지',pills:[{t:'서브컬처',c:'p-gray'}],map:'Akihabara+Tokyo',route:'Mitsui+Garden+Hotel+Ginza+Gochome+to+Akihabara+Tokyo'},
-    {time:'12:00',icon:'🍜',type:'n',title:'점심 — 아키하바라',desc:'',pills:[{t:'점심',c:'p-green'}],map:'Akihabara+restaurant+Tokyo',route:null},
-    {time:'13:00',icon:'🍳',type:'k',title:'갓파바시 도구거리',desc:'아키하바라→다와라마치역 전철 10분 / 도보 5분\n약 800m · 170개 점포 / 주방칼·식기·식품 샘플',pills:[{t:'쇼핑',c:'p-blue'}],map:'Kappabashi+Dogu+Street+Tokyo',route:'Akihabara+to+Kappabashi+Dogu+Street+Tokyo'},
-    {time:'14:30',icon:'🐱',type:'n',title:'야나카 긴자 상점가',desc:'에도 골목 보존 · 고양이 굿즈 · 화과자 / 센다기역 하차',pills:[{t:'포토스팟',c:'p-amber'}],map:'Yanaka+Ginza+Tokyo',route:'Kappabashi+to+Yanaka+Ginza+Tokyo'},
-    {time:'15:30',icon:'⛩',type:'k',title:'네즈 신사 ⭐ 수국 절정!',desc:'붉은 도리이 터널 + 연못 포토스팟\n6월 초 = 수국 절정! 야나카에서 도보 15분',pills:[{t:'수국 시즌!',c:'p-amber'},{t:'포토스팟',c:'p-amber'}],map:'Nezu+Shrine+Tokyo',route:'Yanaka+Ginza+to+Nezu+Shrine+Tokyo'},
-    {time:'17:00',icon:'🏮',type:'k',title:'아사쿠사 센소지 · 카미나리몬',desc:'빨간 대형 제등 포토 · 나카미세 기념품 쇼핑\n네즈신사→아사쿠사 전철 15분',pills:[{t:'포토스팟',c:'p-amber'}],map:'Senso-ji+Temple+Asakusa+Tokyo',route:'Nezu+Shrine+to+Senso-ji+Temple+Asakusa'},
-    {time:'18:30',icon:'🍤',type:'n',title:'저녁 — 아사쿠사 덴뿌라 · 우나기',desc:'카미나리몬 주변 노포 · 다이코쿠야 덴뿌라 추천',pills:[{t:'저녁',c:'p-green'}],map:'Daikokuya+Tempura+Asakusa+Tokyo',route:null},
+    {type:'spot',time:'09:30',icon:'🐱',cls:'k',title:'야나카 긴자 상점가',
+     desc:'에도 골목 보존 · 고양이 굿즈 · 화과자\n센다기역 1번출구 도보 5분',
+     pills:[{t:'포토스팟',c:'p-amber'}],
+     transit:{from:'긴자(호텔)',to:'센다기역',lines:['히비야선','치요다선'],ok:true,time:'약 25분'},
+     map:'Yanaka+Ginza+Tokyo'},
+    {type:'spot',time:'10:30',icon:'⛩',cls:'k',title:'네즈 신사 ⭐ 수국 절정!',
+     desc:'붉은 도리이 터널 + 연못 포토스팟\n6월 초 = 수국 절정! 야나카에서 도보 15분',
+     pills:[{t:'수국 시즌!',c:'p-amber'},{t:'포토스팟',c:'p-amber'}],
+     transit:{from:'야나카긴자',to:'네즈신사',lines:['도보'],walk:15,time:'도보 15분'},
+     map:'Nezu+Shrine+Tokyo'},
+    {type:'spot',time:'12:00',icon:'🍜',cls:'n',title:'점심 — 야나카·네즈 주변',
+     desc:'도보권 내 소바·정식집',
+     pills:[{t:'점심',c:'p-green'}]},
+    {type:'spot',time:'13:30',icon:'🏮',cls:'k',title:'아사쿠사 센소지 · 카미나리몬',
+     desc:'빨간 대형 제등 포토 · 나카미세 기념품 쇼핑',
+     pills:[{t:'포토스팟',c:'p-amber'}],
+     transit:{from:'네즈신사',to:'아사쿠사',lines:['도에이아사쿠사선'],ok:true,time:'전철 15분 or 도보 25분'},
+     map:'Senso-ji+Temple+Asakusa+Tokyo'},
+    {type:'spot',time:'15:00',icon:'🍳',cls:'k',title:'갓파바시 도구거리',
+     desc:'아사쿠사에서 도보 10분 / 약 800m · 170개 점포\n주방칼·식기·식품 샘플 / 현금 지참 권장',
+     pills:[{t:'쇼핑',c:'p-blue'}],
+     transit:{from:'센소지',to:'갓파바시',lines:['도보'],walk:10,time:'도보 10분'},
+     map:'Kappabashi+Dogu+Street+Tokyo'},
+    {type:'spot',time:'16:30',icon:'🎮',cls:'n',title:'[선택] 아키하바라',
+     desc:'이리야역에서 전철 5분 / 시간 여유 있을 때만\n전자제품·피규어·메이드카페 거리',
+     pills:[{t:'선택',c:'p-gray'},{t:'서브컬처',c:'p-gray'}],
+     transit:{from:'이리야역(갓파바시 근처)',to:'아키하바라',lines:['히비야선'],ok:true,time:'약 5분'},
+     map:'Akihabara+Tokyo'},
+    {type:'spot',time:'18:30',icon:'🍤',cls:'n',title:'저녁 — 아사쿠사 덴뿌라·우나기',
+     desc:'카미나리몬 주변 노포 · 다이코쿠야 덴뿌라 추천',
+     pills:[{t:'저녁',c:'p-green'}],
+     map:'Daikokuya+Tempura+Asakusa+Tokyo'},
   ],
   d4:[
-    {time:'08:00',icon:'☕',type:'k',title:'스타벅스 리저브 로스터리 (나카메구로)',desc:'메구로구 아오바다이 2-19-23 / 07:00~22:00\n전 세계 6개 로스터리 · 오픈 직후 방문으로 대기 최소화',pills:[{t:'카페',c:'p-amber'}],map:'Starbucks+Reserve+Roastery+Tokyo+Nakameguro',route:'Mitsui+Garden+Hotel+Ginza+Gochome+to+Starbucks+Reserve+Roastery+Tokyo'},
-    {time:'10:00',icon:'🎸',type:'k',title:'시모키타자와 (下北沢)',desc:'나카메구로→시모키타자와 전철 15분\n빈티지 의류 · 중고 레코드 / 미카n시모키타 탐방',pills:[{t:'빈티지쇼핑',c:'p-blue'},{t:'힙한 동네',c:'p-amber'}],map:'Shimokitazawa+Tokyo',route:'Nakameguro+to+Shimokitazawa+Tokyo'},
-    {time:'12:00',icon:'🩰',type:'k',title:'챠코트 다이칸야마 본점 (플래그십)',desc:'시모키타자와→다이칸야마 전철 5분\n재고 최다 · 영어 피팅 가능',pills:[{t:'발레쇼핑',c:'p-blue'}],map:'Chacott+Daikanyama+Tokyo',route:'Shimokitazawa+to+Chacott+Daikanyama+Tokyo'},
-    {time:'13:30',icon:'👗',type:'k',title:'유미코(Yumiko) 도쿄 부티크',desc:'시부야구 진난 1-20-6 5F · 월요일 정기휴무\n11:00~18:30 · 핸드메이드 레오타드 · 커스터마이징 주문',pills:[{t:'발레쇼핑',c:'p-blue'},{t:'월요일 휴무',c:'p-red'}],map:'Shibuya+Jinnan+1-20-6+Tokyo',route:'Chacott+Daikanyama+to+Shibuya+Jinnan+Tokyo'},
-    {time:'14:30',icon:'🏠',type:'n',title:'DULTON Jinnan Shop',desc:'진난 1-4-8 / 11:00~20:00 · 목요일 정기휴무\n북미 하드웨어 감성 · 홈데코·인테리어 소품',pills:[{t:'인테리어',c:'p-amber'},{t:'목요일 휴무',c:'p-red'}],map:'Dulton+Jinnan+Shibuya+Tokyo',route:'Shibuya+Jinnan+to+Dulton+Jinnan+Tokyo'},
-    {time:'15:30',icon:'🏛',type:'n',title:'오모테산도 힐스 · 아오야마 거리',desc:'이세이미야케 · 꼼데가르송 · YMC\n일본 하이엔드 셀렉트',pills:[{t:'패션쇼핑',c:'p-blue'}],map:'Omotesando+Hills+Tokyo',route:'Dulton+Jinnan+to+Omotesando+Hills+Tokyo'},
-    {time:'16:30',icon:'🧸',type:'k',title:'휴먼메이드 오프라인 스토어 (하라주쿠)',desc:'진구마에 2-6-6 / 11:00~19:00\nNIGO 설립 빈티지 스트리트 · 블루보틀 카페 콜라보 · 북극곰 포토스팟',pills:[{t:'스트리트패션',c:'p-blue'}],map:'Human+Made+Offline+Store+Harajuku+Tokyo',route:'Omotesando+Hills+to+Human+Made+Harajuku+Tokyo'},
-    {time:'17:00',icon:'🌊',type:'k',title:'스투시 하라주쿠 챕터',desc:'진구마에 4-28-2 / 11:30~19:00 · 도보 7분\n하라주쿠 한정 컬래버 라인 · 챕터 전용 상품',pills:[{t:'스트리트패션',c:'p-blue'}],map:'Stussy+Harajuku+Tokyo',route:'Human+Made+Harajuku+to+Stussy+Harajuku+Tokyo'},
-    {time:'17:30',icon:'🇫🇷',type:'k',title:'단톤 도쿄 (DANTON)',desc:'진구마에 6-12-17 다이아몬드빌딩 1F / 11:00~20:00 · 도보 5분\n한국인 직원 상주 · 5,500엔 이상 면세 가능',pills:[{t:'패션쇼핑',c:'p-blue'},{t:'면세가능',c:'p-green'}],map:'Danton+Tokyo+Jingumae',route:'Stussy+Harajuku+to+Danton+Tokyo+Jingumae'},
-    {time:'18:30',icon:'🛹',type:'n',title:'시부야 파르코 · 스크램블 교차로',desc:'BEAMS · 슈프림 · 아디다스 삼바 한정\n돈키호테 면세쇼핑 / 휴먼메이드 파르코점도 내부 위치',pills:[{t:'패션쇼핑',c:'p-blue'}],map:'Shibuya+Parco+Tokyo',route:'Danton+Tokyo+to+Shibuya+Parco+Tokyo'},
-    {time:'20:00',icon:'🥩',type:'n',title:'저녁 — 스키야키 · 야키니쿠',desc:'마지막 밤 · 시부야 · 에비스 주변 고급 고기집',pills:[{t:'마지막 저녁',c:'p-green'}],map:'Shibuya+yakiniku+Tokyo',route:null},
+    {type:'spot',time:'08:00',icon:'☕',cls:'k',title:'스타벅스 리저브 로스터리 (나카메구로)',
+     desc:'메구로구 아오바다이 2-19-23 / 07:00~22:00\n오픈 직후 방문으로 대기 최소화',
+     pills:[{t:'카페',c:'p-amber'}],
+     transit:{from:'긴자(호텔)',to:'나카메구로',lines:['히비야선'],ok:true,time:'약 20분'},
+     map:'Starbucks+Reserve+Roastery+Tokyo+Nakameguro'},
+    {type:'spot',time:'10:00',icon:'🎸',cls:'k',title:'시모키타자와 (下北沢)',
+     desc:'나카메구로→시모키타자와 / 빈티지 의류·레코드\n미카n시모키타 탐방',
+     pills:[{t:'빈티지쇼핑',c:'p-blue'}],
+     transit:{from:'나카메구로',to:'시모키타자와',lines:['오다큐선'],ok:false,note:'사철 (스이카 필요, 약 220엔)',time:'약 15분'},
+     map:'Shimokitazawa+Tokyo'},
+    {type:'spot',time:'12:00',icon:'🩰',cls:'k',title:'챠코트 다이칸야마 본점 (플래그십)',
+     desc:'재고 최다 · 영어 피팅 가능',
+     pills:[{t:'발레쇼핑',c:'p-blue'}],
+     transit:{from:'시모키타자와',to:'다이칸야마',lines:['게이오이노카시라선'],ok:false,note:'사철 (스이카 필요, 약 180엔)',time:'약 10분'},
+     map:'Chacott+Daikanyama+Tokyo'},
+    {type:'spot',time:'13:30',icon:'👗',cls:'k',title:'유미코(Yumiko) 도쿄 부티크',
+     desc:'진난 1-20-6 5F · 월요일 정기휴무 · 11:00~18:30\n핸드메이드 레오타드 · 커스터마이징 주문',
+     pills:[{t:'발레쇼핑',c:'p-blue'},{t:'월요일 휴무',c:'p-red'}],
+     transit:{from:'다이칸야마',to:'시부야(유미코)',lines:['도큐도요코선'],ok:false,note:'사철 (스이카 필요, 약 160엔)',time:'약 5분'},
+     map:'Shibuya+Jinnan+1-20-6+Tokyo'},
+    {type:'spot',time:'14:30',icon:'🏠',cls:'n',title:'DULTON Jinnan Shop',
+     desc:'진난 1-4-8 / 11:00~20:00 · 목요일 정기휴무\n홈데코·인테리어 소품',
+     pills:[{t:'인테리어',c:'p-amber'}],
+     transit:{from:'유미코',to:'DULTON',lines:['도보'],walk:5,time:'도보 5분'},
+     map:'Dulton+Jinnan+Shibuya+Tokyo'},
+    {type:'spot',time:'15:30',icon:'🏛',cls:'n',title:'오모테산도 힐스 · 아오야마 거리',
+     desc:'이세이미야케·꼼데가르송·YMC / 일본 하이엔드',
+     pills:[{t:'패션쇼핑',c:'p-blue'}],
+     transit:{from:'시부야',to:'오모테산도',lines:['긴자선'],ok:true,time:'약 3분'},
+     map:'Omotesando+Hills+Tokyo'},
+    {type:'spot',time:'16:30',icon:'🧸',cls:'k',title:'휴먼메이드 오프라인 스토어 (하라주쿠)',
+     desc:'진구마에 2-6-6 / 11:00~19:00\nNIGO 설립 빈티지 · 블루보틀 카페 콜라보',
+     pills:[{t:'스트리트패션',c:'p-blue'}],
+     transit:{from:'오모테산도',to:'하라주쿠(휴먼메이드)',lines:['도보'],walk:8,time:'도보 8분'},
+     map:'Human+Made+Offline+Store+Harajuku+Tokyo'},
+    {type:'spot',time:'17:00',icon:'🌊',cls:'k',title:'스투시 하라주쿠 챕터',
+     desc:'진구마에 4-28-2 / 11:30~19:00\n하라주쿠 한정 컬래버 · 챕터 전용 상품',
+     pills:[{t:'스트리트패션',c:'p-blue'}],
+     transit:{from:'휴먼메이드',to:'스투시',lines:['도보'],walk:7,time:'도보 7분'},
+     map:'Stussy+Harajuku+Tokyo'},
+    {type:'spot',time:'17:30',icon:'🇫🇷',cls:'k',title:'단톤 도쿄 (DANTON)',
+     desc:'진구마에 6-12-17 다이아몬드빌딩 1F / 11:00~20:00\n한국인 직원 상주 · 5,500엔 이상 면세',
+     pills:[{t:'패션쇼핑',c:'p-blue'},{t:'면세가능',c:'p-green'}],
+     transit:{from:'스투시',to:'단톤',lines:['도보'],walk:5,time:'도보 5분'},
+     map:'Danton+Tokyo+Jingumae'},
+    {type:'spot',time:'18:30',icon:'🛹',cls:'n',title:'시부야 파르코 · 스크램블 교차로',
+     desc:'BEAMS·슈프림·아디다스 삼바 한정 / 돈키호테 면세\n휴먼메이드 파르코점도 내부 위치',
+     pills:[{t:'패션쇼핑',c:'p-blue'}],
+     transit:{from:'하라주쿠',to:'시부야',lines:['긴자선'],ok:true,time:'약 5분'},
+     map:'Shibuya+Parco+Tokyo'},
+    {type:'spot',time:'20:00',icon:'🥩',cls:'n',title:'저녁 — 스키야키·야키니쿠',
+     desc:'마지막 밤 · 시부야·에비스 고급 고기집',
+     pills:[{t:'마지막 저녁',c:'p-green'}],
+     map:'Shibuya+yakiniku+Tokyo'},
   ],
   d5:[
-    {time:'10:00',icon:'🧳',type:'w',title:'호텔 체크아웃',desc:'11:00 전 체크아웃 · 짐 프런트 보관',pills:[{t:'11:00까지',c:'p-red'}],map:null,route:null},
-    {time:'10:30',icon:'🚶',type:'n',title:'긴자 마지막 산책 & 쇼핑',desc:'이토야 문구점 · 무지 긴자 · 긴자 식스 지하식품관',pills:[{t:'쇼핑',c:'p-blue'}],map:'Itoya+Ginza+Tokyo',route:null},
-    {time:'12:30',icon:'🍜',type:'n',title:'점심 — 소바 · 우동',desc:'긴자 근처 / 가볍게',pills:[{t:'점심',c:'p-green'}],map:'Ginza+soba+Tokyo',route:null},
-    {time:'13:30',icon:'🚃',type:'w',title:"호텔 짐 픽업 → 나리타 출발 (N'EX)",desc:"N'EX 약 80분 · 나리타 T1 탑승수속\n14:00 이전 출발 필수!",pills:[{t:'14:00 이전 출발!',c:'p-red'}],map:'Shinbashi+Station+Tokyo',route:'Mitsui+Garden+Hotel+Ginza+Gochome+to+Narita+Airport'},
-    {time:'16:30',icon:'✈',type:'n',title:'OZ103 나리타 출발 → 귀국',desc:'좌석 29J · 인천 19:10 도착 · 제2터미널(T2)',pills:[{t:'귀국',c:'p-gray'}],map:null,route:null},
+    {type:'spot',time:'10:00',icon:'🧳',cls:'w',title:'호텔 체크아웃',
+     desc:'11:00 전 체크아웃 · 짐 프런트 보관',
+     pills:[{t:'11:00까지',c:'p-red'}]},
+    {type:'spot',time:'10:30',icon:'🚶',cls:'n',title:'긴자 마지막 산책 & 쇼핑',
+     desc:'이토야 문구점·무지 긴자·긴자 식스 지하식품관',
+     pills:[{t:'쇼핑',c:'p-blue'}],
+     map:'Itoya+Ginza+Tokyo'},
+    {type:'spot',time:'12:30',icon:'🍜',cls:'n',title:'점심 — 소바·우동',
+     desc:'긴자 근처 / 가볍게',pills:[{t:'점심',c:'p-green'}],
+     map:'Ginza+soba+Tokyo'},
+    {type:'spot',time:'13:30',icon:'🚃',cls:'w',title:"호텔 짐 픽업 → 나리타 출발 (N'EX)",
+     desc:"신바시역→나리타 N'EX 약 80분\n14:00 이전 탑승 필수!",
+     pills:[{t:'14:00 이전 출발!',c:'p-red'}],
+     transit:{from:'신바시역',to:'나리타공항',lines:["N'EX"],ok:false,note:'별도구매 (약 3,070엔)',time:'약 80분'},
+     map:'Shinbashi+Station+Tokyo'},
+    {type:'spot',time:'16:30',icon:'✈',cls:'n',title:'OZ103 나리타 출발 → 귀국',
+     desc:'좌석 29J · 인천 19:10 도착 · 제2터미널(T2)',
+     pills:[{t:'귀국',c:'p-gray'}]},
   ]
 };
 
@@ -199,39 +390,72 @@ const CL=[
   {t:'히츠마부시 예약 재확인',s:'5/31(일) 18:00 · 17:50 도착 필수',u:true},
   {t:'챠코트 다이칸야마 피팅 사전예약',s:'chacott-jp.com',u:true},
   {t:'귀국 당일 14:00 이전 호텔 출발',s:"N'EX 약 80분 소요",u:true},
-  {t:'휴먼메이드 드랍 날짜 확인',s:'humanmade.jp 공지사항 확인',u:true},
+  {t:'휴먼메이드 드랍 날짜 확인',s:'humanmade.jp 공지사항',u:true},
+  {t:'N\'EX 왕복 사전 예약',s:'클룩·KKday 또는 JR동일본 공식사이트',u:true},
+  {t:'서브웨이 티켓 72시간권 구매',s:'클룩·KKday에서 사전 구매 권장',u:false},
+  {t:'스이카 충전 (3,000엔)',s:'DAY4 사철구간 + 편의점 잡비용',u:false},
   {t:'이찌방쿠지 현재 판매 판 확인',s:'ichibankyuji.com',u:false},
-  {t:'구글맵 도쿄 오프라인 다운로드',s:'데이터 없이도 길찾기 가능',u:false},
-  {t:'Suica 카드 준비',s:'나리타 공항 또는 편의점 구매',u:false},
-  {t:'엔화 환전',s:'현금 필요 매장 있음',u:false},
+  {t:'구글맵 도쿄 오프라인 다운로드',s:'데이터 없이 길찾기 가능',u:false},
   {t:'여권 유효기간 확인',s:'출발일 기준 6개월 이상',u:false},
   {t:'짐 무게 확인',s:'쇼핑 후 초과수하물 주의',u:false},
 ];
 
-function buildTl(key){
-  const items=DAYS[key];
-  const c=document.getElementById('tl-'+key);
-  if(!c)return;
-  items.forEach((item,i)=>{
-    const isLast=i===items.length-1;
-    const dc=item.type==='k'?'tl-dot k':item.type==='w'?'tl-dot w':'tl-dot';
-    const sc=item.type==='k'?'spot k':item.type==='w'?'spot w':'spot';
-    const pills=(item.pills||[]).map(p=>`<span class="pill ${p.c}">${p.t}</span>`).join('');
-    const mapHtml=item.map?`<a class="map-btn" href="https://maps.google.com/?q=${item.map}" target="_blank">📍 위치</a>`:'';
-    const routeHtml=item.route?`<a class="route-btn" href="https://maps.google.com/maps?daddr=${encodeURIComponent(item.route.split('+to+').pop().replace(/\+/g,' '))}&travelmode=transit" target="_blank">🧭 경로</a>`:'';
-    const foot=(pills||mapHtml||routeHtml)?`<div class="spot-foot">${pills}${mapHtml}${routeHtml}</div>`:'';
-    const el=document.createElement('div');
-    el.className='tl-item';
-    el.innerHTML=`
+function buildTl(key) {
+  const items = DAYS[key];
+  const c = document.getElementById('tl-'+key);
+  if(!c) return;
+  items.forEach((item, i) => {
+    const isLast = i === items.length-1;
+    const dc = item.cls==='k'?'tl-dot k':item.cls==='w'?'tl-dot w':'tl-dot';
+    const sc = item.cls==='k'?'spot k':item.cls==='w'?'spot w':'spot';
+    const pills = (item.pills||[]).map(p=>`<span class="pill ${p.c}">${p.t}</span>`).join('');
+    const mapHtml = item.map ? `<a class="map-btn" href="https://maps.google.com/?q=${item.map}" target="_blank">📍 위치</a>` : '';
+    const routeDest = item.transit && !item.transit.walk ? (item.transit.to||'').replace(/[()]/g,'') : '';
+    const routeHtml = routeDest ? `<a class="route-btn" href="https://maps.google.com/maps?daddr=${encodeURIComponent(routeDest+' Tokyo')}&travelmode=transit" target="_blank">🧭 경로</a>` : '';
+    const foot = (pills||mapHtml||routeHtml) ? `<div class="spot-foot">${pills}${mapHtml}${routeHtml}</div>` : '';
+
+    // transit 카드 (이동 정보)
+    let transitHtml = '';
+    if(item.transit) {
+      const t = item.transit;
+      const linesHtml = t.lines.map(l=>{
+        const c2 = LINE_COLORS[l]||'#888';
+        return `<span class="line-badge" style="background:${c2}">${l}</span>`;
+      }).join('');
+      const timeH = `<span class="time-badge">${t.time}</span>`;
+      let subH = '';
+      if(t.walk) subH = `<span class="sub-badge sub-walk">🚶 도보 약 ${t.walk}분</span>`;
+      else if(t.ok) subH = `<span class="sub-badge sub-ok">✅ 서브웨이티켓</span>`;
+      else subH = `<span class="sub-badge sub-ng">❌ 스이카 (${t.note})</span>`;
+      transitHtml = `
+        <div class="spot transit" style="margin-bottom:6px">
+          <div class="spot-top">
+            <div class="spot-icon" style="font-size:13px">🚃</div>
+            <div class="spot-info">
+              <div class="spot-title">${t.from} → ${t.to}</div>
+              <div class="transit-info">${linesHtml}${timeH}${subH}</div>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    const el = document.createElement('div');
+    el.className = 'tl-item';
+    el.innerHTML = `
       <div class="tl-left">
         <div class="tl-time">${item.time}</div>
         <div class="tl-dc"><div class="${dc}"></div>${!isLast?'<div class="tl-line"></div>':''}</div>
       </div>
       <div class="tl-body">
+        ${transitHtml}
         <div class="${sc}">
-          <div class="spot-top"><div class="spot-icon">${item.icon}</div>
-          <div class="spot-info"><div class="spot-title">${item.title}</div>
-          <div class="spot-desc">${item.desc.replace(/\n/g,'<br>')}</div></div></div>
+          <div class="spot-top">
+            <div class="spot-icon">${item.icon}</div>
+            <div class="spot-info">
+              <div class="spot-title">${item.title}</div>
+              <div class="spot-desc">${item.desc.replace(/\n/g,'<br>')}</div>
+            </div>
+          </div>
           ${foot}
         </div>
       </div>`;
@@ -239,39 +463,39 @@ function buildTl(key){
   });
 }
 
-function buildCL(){
-  const saved=JSON.parse(localStorage.getItem('cl')||'[]');
-  ['cl-u','cl-n'].forEach(id=>{
-    const urgent=id==='cl-u';
-    const c=document.getElementById(id);
-    CL.filter(x=>x.u===urgent).forEach((item)=>{
-      const idx=CL.indexOf(item);
-      const done=saved.includes(idx);
-      const el=document.createElement('div');
-      el.className='cl-item'+(done?' done':'');
-      el.innerHTML=`<div class="cl-box">${done?'✓':''}</div>
+function buildCL() {
+  const saved = JSON.parse(localStorage.getItem('cl')||'[]');
+  ['cl-u','cl-n'].forEach(id => {
+    const urgent = id==='cl-u';
+    const c = document.getElementById(id);
+    CL.filter(x=>x.u===urgent).forEach(item => {
+      const idx = CL.indexOf(item);
+      const done = saved.includes(idx);
+      const el = document.createElement('div');
+      el.className = 'cl-item'+(done?' done':'');
+      el.innerHTML = `<div class="cl-box">${done?'✓':''}</div>
         <div style="flex:1"><div class="cl-title">${item.t}</div><div class="cl-sub">${item.s}</div></div>
         ${item.u?'<div class="cl-urgent">필수</div>':''}`;
-      el.onclick=()=>{
+      el.onclick = () => {
         el.classList.toggle('done');
-        const s=JSON.parse(localStorage.getItem('cl')||'[]');
-        const ns=el.classList.contains('done')?[...s,idx]:s.filter(x=>x!==idx);
-        localStorage.setItem('cl',JSON.stringify(ns));
-        el.querySelector('.cl-box').textContent=el.classList.contains('done')?'✓':'';
+        const s = JSON.parse(localStorage.getItem('cl')||'[]');
+        const ns = el.classList.contains('done') ? [...s,idx] : s.filter(x=>x!==idx);
+        localStorage.setItem('cl', JSON.stringify(ns));
+        el.querySelector('.cl-box').textContent = el.classList.contains('done')?'✓':'';
       };
       c.appendChild(el);
     });
   });
 }
 
-document.getElementById('tabs').addEventListener('click',e=>{
-  const tab=e.target.closest('.tab');
-  if(!tab)return;
+document.getElementById('tabs').addEventListener('click', e => {
+  const tab = e.target.closest('.tab');
+  if(!tab) return;
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('on'));
   tab.classList.add('on');
   document.getElementById(tab.dataset.p).classList.add('on');
-  document.querySelector('.scroll-area').scrollTop=0;
+  document.querySelector('.scroll-area').scrollTop = 0;
 });
 
 ['d1','d2','d3','d4','d5'].forEach(buildTl);
