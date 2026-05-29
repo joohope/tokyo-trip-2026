@@ -133,10 +133,18 @@ body{font-family:'Noto Sans KR',-apple-system,sans-serif;color:var(--tx);display
 <div class="panel on" id="p-info">
   <div class="hint">💡 Safari → 공유(□↑) → <strong>홈 화면에 추가</strong>하면 앱처럼 사용 가능</div>
   <div class="legend">
-    <div class="legend-title">교통 표시 범례</div>
+    <div class="legend-title">교통 패스 전략</div>
+    <div class="legend-row" style="margin-bottom:6px">
+      <span style="font-size:11px;color:var(--sub);font-weight:500">D2~D3</span>
+      <span class="sub-badge sub-ok">서브웨이티켓 48시간권</span>
+    </div>
+    <div class="legend-row" style="margin-bottom:8px">
+      <span style="font-size:11px;color:var(--sub);font-weight:500">D4~D5</span>
+      <span class="sub-badge" style="background:var(--pbg);color:var(--pur);border:1px solid var(--pbd)">스이카 충전식</span>
+    </div>
     <div class="legend-row">
-      <span class="sub-badge sub-ok">✅ 서브웨이티켓 OK</span>
-      <span class="sub-badge sub-ng">❌ 스이카 필요</span>
+      <span class="sub-badge sub-ok">✅ 서브웨이티켓</span>
+      <span class="sub-badge" style="background:var(--pbg);color:var(--pur);border:1px solid var(--pbd)">🟣 스이카</span>
       <span class="sub-badge sub-walk">🚶 도보</span>
     </div>
   </div>
@@ -164,9 +172,9 @@ body{font-family:'Noto Sans KR',-apple-system,sans-serif;color:var(--tx);display
 
 <!-- DAY 1~5 컨테이너 -->
 <div class="panel" id="p-d1"><div class="day-head"><div class="day-name">DAY 1 · 5/30(토) — 도착 & 긴자</div><div class="day-route">OZ102 나리타 10:50 도착 · N'EX(별도구매)로 이동</div></div><div class="tl" id="tl-d1"></div></div>
-<div class="panel" id="p-d2"><div class="day-head"><div class="day-name">DAY 2 · 5/31(일) — 서브컬처 + 신주쿠 + 히츠마부시</div><div class="day-route">애니메이트 이케부쿠로 → 신주쿠 → 가부키초 → 긴자</div></div><div class="tl" id="tl-d2"></div></div>
-<div class="panel" id="p-d3"><div class="day-head"><div class="day-name">DAY 3 · 6/1(월) — 야나카·네즈 + 아사쿠사 + 갓파바시</div><div class="day-route">야나카 긴자 → 네즈신사 → 센소지 → 갓파바시 → (선택) 아키하바라</div></div><div class="tl" id="tl-d3"></div></div>
-<div class="panel" id="p-d4"><div class="day-head"><div class="day-name">DAY 4 · 6/2(화) — 발레쇼핑 + 스트리트 패션 + 시부야</div><div class="day-route">스벅 리저브(나카메구로) → 시모키타 → 챠코트 → 유미코 → 하라주쿠 → 시부야</div></div><div class="tl" id="tl-d4"></div></div>
+<div class="panel" id="p-d2"><div class="day-head"><div class="day-name">DAY 2 · 5/31(일) — 서브컬처 + 신주쿠 + 히츠마부시</div><div class="day-route">애니메이트 이케부쿠로 → 신주쿠 → 가부키초 → 긴자<br><span style="color:var(--green);font-weight:500">🎫 서브웨이티켓 48시간권 개시 (D2 첫 탑승 시)</span></div></div><div class="tl" id="tl-d2"></div></div>
+<div class="panel" id="p-d3"><div class="day-head"><div class="day-name">DAY 3 · 6/1(월) — 야나카·네즈 + 아사쿠사 + 갓파바시</div><div class="day-route">야나카 긴자 → 네즈신사 → 센소지 → 갓파바시 → (선택) 아키하바라<br><span style="color:var(--green);font-weight:500">🎫 서브웨이티켓 48시간권 사용 (D2 개시 기준 48시간 이내)</span></div></div><div class="tl" id="tl-d3"></div></div>
+<div class="panel" id="p-d4"><div class="day-head"><div class="day-name">DAY 4 · 6/2(화) — 발레쇼핑 + 스트리트 패션 + 시부야</div><div class="day-route">스벅 리저브(나카메구로) → 시모키타 → 챠코트 → 유미코 → 하라주쿠 → 시부야<br><span style="color:var(--pur);font-weight:500">🟣 스이카 충전식 사용 (사철 구간 포함)</span></div></div><div class="tl" id="tl-d4"></div></div>
 <div class="panel" id="p-d5"><div class="day-head"><div class="day-name">DAY 5 · 6/3(수) — 체크아웃 & 귀국</div><div class="day-route">OZ103 나리타 16:30 출발 · 좌석 29J · 14:00 이전 출발 필수</div></div><div class="tl" id="tl-d5"></div></div>
 
 <!-- 체크리스트 -->
@@ -190,8 +198,18 @@ function lineBadge(name) {
   const c = LINE_COLORS[name] || '#888';
   return `<span class="line-badge" style="background:${c}">${name}</span>`;
 }
-function subOk() { return `<span class="sub-badge sub-ok">✅ 서브웨이티켓</span>`; }
-function subNg(reason) { return `<span class="sub-badge sub-ng">❌ 스이카 (${reason})</span>`; }
+function subOk(day) {
+  if(day && (day==='d4'||day==='d5')) {
+    return `<span class="sub-badge" style="background:var(--pbg);color:var(--pur);border:1px solid var(--pbd)">🟣 스이카</span>`;
+  }
+  return `<span class="sub-badge sub-ok">✅ 서브웨이티켓</span>`;
+}
+function subNg(reason, day) {
+  if(day && (day==='d4'||day==='d5')) {
+    return `<span class="sub-badge" style="background:var(--pbg);color:var(--pur);border:1px solid var(--pbd)">🟣 스이카 (${reason})</span>`;
+  }
+  return `<span class="sub-badge sub-ng">❌ 스이카 필요 (${reason})</span>`;
+}
 function walk(min) { return `<span class="sub-badge sub-walk">🚶 도보 약 ${min}분</span>`; }
 function timeBadge(t) { return `<span class="time-badge">약 ${t}</span>`; }
 
@@ -425,8 +443,8 @@ function buildTl(key) {
       const timeH = `<span class="time-badge">${t.time}</span>`;
       let subH = '';
       if(t.walk) subH = `<span class="sub-badge sub-walk">🚶 도보 약 ${t.walk}분</span>`;
-      else if(t.ok) subH = `<span class="sub-badge sub-ok">✅ 서브웨이티켓</span>`;
-      else subH = `<span class="sub-badge sub-ng">❌ 스이카 (${t.note})</span>`;
+      else if(t.ok) subH = subOk(key);
+      else subH = subNg(t.note, key);
       transitHtml = `
         <div class="spot transit" style="margin-bottom:6px">
           <div class="spot-top">
